@@ -14,9 +14,9 @@ ADHD Companion Widget is a tool designed to support individuals with Attention-D
    git clone https://github.com/ima-eky/ADHD-Support-Extension.git
    ```
 2. Navigate to the project directory:
- ```bash
-  cd ADHD-Support-Extension
-```
+    ```bash
+     cd ADHD-Support-Extension
+    ```
 3. Install dependencies:
    ``` bash
    npm install
