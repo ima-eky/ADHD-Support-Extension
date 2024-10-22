@@ -1,7 +1,7 @@
 # ADHD Companion Extension
 
 ## Description
-ADHD Companion Widget is a tool designed to support individuals with Attention-Deficit/Hyperactivity Disorder (ADHD) by leveraging generative AI and user-centered design principles. This extension/widget integrates various features such as task management, distraction reduction, and customization options to enhance focus and productivity in daily life.
+ADHD Companion Extension is a tool designed to support individuals with Attention-Deficit/Hyperactivity Disorder (ADHD) by leveraging generative AI and user-centered design principles. This extension/widget integrates various features such as task management, distraction reduction, and customization options to enhance focus and productivity in daily life.
 
 The plan is for the MVP is to be a deployed functional browser extension.
 
