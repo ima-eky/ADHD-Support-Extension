@@ -1,1 +1,4 @@
-# To be added
+# ADHD Companion Widget
+
+## Description
+ADHD Companion Widget is a tool designed to support individuals with Attention-Deficit/Hyperactivity Disorder (ADHD) by leveraging generative AI and user-centered design principles. This widget integrates various features such as task management, distraction reduction tools, and customization options to enhance focus and productivity in daily life.
