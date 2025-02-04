@@ -1,33 +1,19 @@
 {
-    "manifest_version": 3,
-    "name": "ADHD Companion Widget",
-    "version": "1.0",
-    "description": "A browser extension to help support ADHD.",
-    "permissions": [
-        "storage", 
-        "activeTab"
-    ],
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": "icons/icon.png"
-    },
-    "background": {
+  "manifest_version": 3,
+  "name": "Focus Mode",
+  "version": "1.0",
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+  "host_permissions": ["https://www.google.com/*"],
+  "background": {
       "service_worker": "background.js"
-    },
-    "content_scripts": [                         
-    {
-      "matches": ["<all_urls>"],              
-      "js": ["content.js"]                    
-    }
-  ],
-  "web_accessible_resources": [
-    {
-        "resources" : ["icons/*"],
-        "matches": ["<all_urls>"]
-    }
-  ],
-    "icons": {
-      "48": "icons/icon.png"
-    }
-  }
-  
+  },
+  "action": {
+      "default_popup": "popup.html"
+  },
+  "content_scripts": [
+      {
+          "matches": ["*://www.youtube.com/*"],
+          "js": ["content.js"]
+      }
+  ]
+}

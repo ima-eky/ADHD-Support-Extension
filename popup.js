@@ -1,31 +1,51 @@
-document.getElementById('focus-button').addEventListener('click', () => {
-    const output = document.getElementById('output');
-    if (output.innerText === "Focus mode activated!") {
-        output.innerText = "";
+document.addEventListener("DOMContentLoaded", () => {
+    const playRandomVideoBtn = document.getElementById("playRandomVideo");
+    const videoContainer = document.getElementById("videoContainer");
+    const videoPlayer = document.getElementById("videoPlayer");
+    const nextButton = document.getElementById("nextVideo");
+    const toggleSwitch = document.getElementById("toggleFocusMode");
+    const playButton = document.getElementById("playVideo");
+    const pauseButton = document.getElementById("pauseVideo");
+
+    const bodyDoublingVideos = [
+        "https://www.youtube.com/embed/yLOM8R6lbzg",
+        "https://www.youtube.com/embed/heNl1IusphU?si=xf35QnYmvWrHJ44x",
+        "https://www.youtube.com/embed/7izHQ7Ojt-s?si=NBf-NE06nHkijNxI",
+        "https://www.youtube.com/embed/dkwp1bGNu2Q?si=G7Wr6BeDhEg7VBTf"
+    ];
+
+    function getRandomVideo() {
+        const randomIndex = Math.floor(Math.random() * bodyDoublingVideos.length);
+        return bodyDoublingVideos[randomIndex] + "?autoplay=1&modestbranding=1";
     }
-    else {
-        output.innerText = "Focus mode activated!";
-        window.open('https://www.youtube.com/watch?v=6qXnPFytzU0')
-    }
+     playRandomVideoBtn.addEventListener("click", () => {
+        videoPlayer.src = getRandomVideo();
+        videoContainer.style.display = "block"; // Show the video container
+    });
 
-});
 
-let video;
+    // Load a new random video
+    nextButton.addEventListener("click", () => {
+        videoPlayer.src = getRandomVideo();
+    });
+    // Load saved state
+    chrome.storage.local.get(["focusMode"], (data) => {
+        toggleSwitch.checked = data.focusMode || false;
+    });
 
-document.getElementById('focus-toggle').addEventListener('change', (event) => {
-    const output = document.getElementById("output");
-    const videoURL = "https://www.youtube.com/watch?v=6qXnPFytzU0"
-   
+    toggleSwitch.addEventListener("change", () => {
+        chrome.runtime.sendMessage({ action: "toggleFocusMode" }, () => {
+            chrome.storage.local.get(["focusMode"], (data) => {
+                toggleSwitch.checked = data.focusMode;
+            });
+        });
+    });
 
-    if (event.target.checked) {
-        output.innerText = "Focus Mode Activated";
-        video = window.open(videoURL, '_blank');
-    } else {
-        output.innerText = "Focus Mode deactivated";
+    playButton.addEventListener("click", () => {
+        chrome.runtime.sendMessage({ action: "controlVideo", command: "playVideo" });
+    });
 
-        if (video) {
-            video.close();
-            video = null;
-        }
-    }
+    pauseButton.addEventListener("click", () => {
+        chrome.runtime.sendMessage({ action: "controlVideo", command: "pauseVideo" });
+    });
 });
