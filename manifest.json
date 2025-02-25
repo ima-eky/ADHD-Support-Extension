@@ -3,12 +3,12 @@
   "name": "Focus Mode",
   "version": "1.0",
   "permissions": ["storage", "tabs", "activeTab", "scripting"],
-  "host_permissions": ["https://www.google.com/*"],
+  "host_permissions": ["<all_urls>"],
   "background": {
       "service_worker": "background.js"
   },
   "action": {
-      "default_popup": "popup.html"
+      "default_popup": "public/popup.html"
   },
   "content_scripts": [
       {
