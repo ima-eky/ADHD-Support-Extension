@@ -1,5 +1,26 @@
 body {
     font-family: Arial, sans-serif;
+    width: 250px;
+    padding: 10px;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+  
+body {
+    font-family: Arial, sans-serif;
     text-align: center;
     width: 320px;
     padding: 20px;

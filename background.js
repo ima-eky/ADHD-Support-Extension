@@ -70,3 +70,32 @@ chrome.tabs.onRemoved.addListener((closedTabId) => {
         }
     });
 });
+
+// Function to update blocked sites
+function updateBlockedSites() {
+    chrome.storage.local.get(["blockedSites"], (data) => {
+      const blockedSites = data.blockedSites || [];
+      
+      // Convert sites into Chrome rule format
+      const rules = blockedSites.map((site, index) => ({
+        id: index + 1,
+        priority: 1,
+        action: { type: "block" },
+        condition: { urlFilter: site, resourceTypes: ["main_frame"] }
+      }));
+  
+      // Update extension's blocking rules
+      chrome.declarativeNetRequest.updateDynamicRules({
+        removeRuleIds: blockedSites.map((_, index) => index + 1),
+        addRules: rules
+      });
+    });
+  }
+  
+  // Listen for changes to blocked sites and update rules
+  chrome.storage.onChanged.addListener(updateBlockedSites);
+  
+  // Initial setup when the extension starts
+  chrome.runtime.onInstalled.addListener(updateBlockedSites);
+  chrome.runtime.onStartup.addListener(updateBlockedSites);
+  

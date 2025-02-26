@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import predefinedSubtasks from '../predefinedSubtasks.json';
 import taskSynonyms from '../taskSynonyms.json';
 import stringSimilarity from 'string-similarity';
-
 
 const TaskBreakdown = () => {
     const [inputText, setInputText] = useState('');
@@ -47,13 +46,12 @@ const TaskBreakdown = () => {
     
         return null;
     };
-    
 
     const handleButtonClick = () => {
         const matchedTask = findBestTaskMatch(inputText);
 
         if (matchedTask && predefinedSubtasks[matchedTask]) {
-            setSubtasks(predefinedSubtasks[matchedTask]);
+            setSubtasks(predefinedSubtasks[matchedTask]); // Use predefined subtasks
         } else {
             setSubtasks(["No subtasks found"]);
         }
@@ -62,14 +60,14 @@ const TaskBreakdown = () => {
     return (
         <div>
             <h1>Task Breakdown</h1>
-            <p>This component will display the breakdown of tasks.</p>
+            <p>Enter a task to see its breakdown.</p>
             <input 
                 type="text"
                 value={inputText}
                 onChange={handleInputChange}
                 placeholder="Enter a task"
             />
-            <button onClick = {handleButtonClick}>Break into subtasks</button>
+            <button onClick={handleButtonClick}>Break into Subtasks</button>
             <h2>Subtasks</h2>
             <ul>
                 {subtasks.map((subtask, index) => (
