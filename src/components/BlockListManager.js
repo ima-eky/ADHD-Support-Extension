@@ -2,12 +2,18 @@ import { exp } from '@tensorflow/tfjs';
 import React, { useEffect } from 'react';
 
 export default function BlockListManager() {
-
     const [blockedSites, setBlockedSites] = React.useState([]);
     const [newSite, setNewSite] = React.useState('');   
+    const [startTime, setStartTime] = React.useState(null);
+    const [endTime, setEndTime] = React.useState(null);
+
     useEffect(() => {
-        chrome.storage.local.get(["blockedSites"], (data) => {
+        chrome.storage.local.get(["blockedSites", "blockSchedule"], (data) => {
             setBlockedSites(data.blockedSites || []);
+            if (data.blockSchedule) {
+              setStartTime(data.blockSchedule.startTime);
+              setEndTime(data.blockSchedule.endTime);
+            }
         });
     }, []);
 
@@ -24,6 +30,13 @@ export default function BlockListManager() {
         const updatedSites = blockedSites.filter((s) => s !== site);
         setBlockedSites(updatedSites);
         chrome.storage.local.set({ blockedSites: updatedSites }); // Update storage
+      };
+
+      const saveSchedule = () => {
+        if (startTime && endTime) {
+            chrome.storage.local.set({ blockSchedule: { start: startTime, end: endTime } });
+            chrome.runtime.sendMessage({ action: "updateBlockSchedule" });
+        }
       };
     
 return (
@@ -56,6 +69,16 @@ return (
             </li>
         ))}
         </ul>
+        <h2 className="text-lg font-bold mt-4">Blocking Schedule</h2>
+        <label>Start Time:</label>
+        <input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} className="border p-2 rounded w-full" />
+        
+        <label>End Time:</label>
+        <input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} className="border p-2 rounded w-full" />
+
+        <button onClick={saveSchedule} className="bg-blue-500 text-white px-4 py-2 rounded mt-2 w-full">
+            Save Schedule
+        </button>
     </div>
     );
 }
