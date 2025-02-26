@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/cookie/dist/index.js":
@@ -8,6 +7,7 @@
   \*******************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parse = parse;
@@ -256,6 +256,7 @@ function isDate(val) {
   \********************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 /**
  * @license React
  * react-dom-client.development.js
@@ -24982,6 +24983,7 @@ function isDate(val) {
   \*************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 /**
  * @license React
  * react-dom.development.js
@@ -25416,6 +25418,7 @@ function isDate(val) {
   \******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 function checkDCE() {
@@ -25459,6 +25462,7 @@ if (false) {} else {
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 function checkDCE() {
@@ -25502,6 +25506,7 @@ if (false) {} else {
   \***********************************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Action: () => (/* binding */ Action),
@@ -35335,6 +35340,7 @@ function deserializeErrors2(errors) {
   \*****************************************************/
 /***/ ((module, exports, __webpack_require__) => {
 
+"use strict";
 /* module decorator */ module = __webpack_require__.nmd(module);
 /**
  * @license React
@@ -36867,6 +36873,7 @@ function deserializeErrors2(errors) {
   \*************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (false) {} else {
@@ -36882,6 +36889,7 @@ if (false) {} else {
   \*************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 /**
  * @license React
  * scheduler.development.js
@@ -37256,6 +37264,7 @@ if (false) {} else {
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (false) {} else {
@@ -37271,6 +37280,7 @@ if (false) {} else {
   \**********************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var defaultParseOptions = {
@@ -37499,12 +37509,89 @@ module.exports.splitCookiesString = splitCookiesString;
 
 /***/ }),
 
+/***/ "./node_modules/string-similarity/src/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/string-similarity/src/index.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+module.exports = {
+	compareTwoStrings:compareTwoStrings,
+	findBestMatch:findBestMatch
+};
+
+function compareTwoStrings(first, second) {
+	first = first.replace(/\s+/g, '')
+	second = second.replace(/\s+/g, '')
+
+	if (first === second) return 1; // identical or empty
+	if (first.length < 2 || second.length < 2) return 0; // if either is a 0-letter or 1-letter string
+
+	let firstBigrams = new Map();
+	for (let i = 0; i < first.length - 1; i++) {
+		const bigram = first.substring(i, i + 2);
+		const count = firstBigrams.has(bigram)
+			? firstBigrams.get(bigram) + 1
+			: 1;
+
+		firstBigrams.set(bigram, count);
+	};
+
+	let intersectionSize = 0;
+	for (let i = 0; i < second.length - 1; i++) {
+		const bigram = second.substring(i, i + 2);
+		const count = firstBigrams.has(bigram)
+			? firstBigrams.get(bigram)
+			: 0;
+
+		if (count > 0) {
+			firstBigrams.set(bigram, count - 1);
+			intersectionSize++;
+		}
+	}
+
+	return (2.0 * intersectionSize) / (first.length + second.length - 2);
+}
+
+function findBestMatch(mainString, targetStrings) {
+	if (!areArgsValid(mainString, targetStrings)) throw new Error('Bad arguments: First argument should be a string, second should be an array of strings');
+	
+	const ratings = [];
+	let bestMatchIndex = 0;
+
+	for (let i = 0; i < targetStrings.length; i++) {
+		const currentTargetString = targetStrings[i];
+		const currentRating = compareTwoStrings(mainString, currentTargetString)
+		ratings.push({target: currentTargetString, rating: currentRating})
+		if (currentRating > ratings[bestMatchIndex].rating) {
+			bestMatchIndex = i
+		}
+	}
+	
+	
+	const bestMatch = ratings[bestMatchIndex]
+	
+	return { ratings: ratings, bestMatch: bestMatch, bestMatchIndex: bestMatchIndex };
+}
+
+function areArgsValid(mainString, targetStrings) {
+	if (typeof mainString !== 'string') return false;
+	if (!Array.isArray(targetStrings)) return false;
+	if (!targetStrings.length) return false;
+	if (targetStrings.find( function (s) { return typeof s !== 'string'})) return false;
+	return true;
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/turbo-stream/dist/turbo-stream.mjs":
 /*!*********************************************************!*\
   !*** ./node_modules/turbo-stream/dist/turbo-stream.mjs ***!
   \*********************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   decode: () => (/* binding */ decode),
@@ -38190,6 +38277,7 @@ function raceSignal(promise, signal) {
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -38197,10 +38285,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/development/chunk-HA7DTUK3.mjs");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/development/chunk-HA7DTUK3.mjs");
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Home */ "./src/components/Home.js");
 /* harmony import */ var _components_Settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Settings */ "./src/components/Settings.js");
 /* harmony import */ var _components_FocusMode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/FocusMode */ "./src/components/FocusMode.js");
+/* harmony import */ var _components_TaskBreakdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/TaskBreakdown */ "./src/components/TaskBreakdown.js");
+
 
 
 
@@ -38208,21 +38298,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: {
       padding: "20px",
       width: "300px"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Welcome"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Welcome"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/"
-  }, "Home"), " | ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+  }, "Home"), " | ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/settings"
-  }, "Settings")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_FocusMode__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  }, "Settings"), "| ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+    to: "/taskBreakdown"
+  }, "Task Breakdown")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_FocusMode__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/settings",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Settings__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+    path: "/taskBreakdown",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_TaskBreakdown__WEBPACK_IMPORTED_MODULE_5__["default"], null)
   }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -38235,6 +38330,7 @@ var App = function App() {
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -38342,6 +38438,7 @@ var FocusMode = function FocusMode() {
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -38362,6 +38459,7 @@ var Home = function Home() {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -38373,6 +38471,128 @@ var Settings = function Settings() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Adjust your preferences here."));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Settings);
+
+/***/ }),
+
+/***/ "./src/components/TaskBreakdown.js":
+/*!*****************************************!*\
+  !*** ./src/components/TaskBreakdown.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _predefinedSubtasks_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../predefinedSubtasks.json */ "./src/predefinedSubtasks.json");
+/* harmony import */ var _taskSynonyms_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../taskSynonyms.json */ "./src/taskSynonyms.json");
+/* harmony import */ var string_similarity__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! string-similarity */ "./node_modules/string-similarity/src/index.js");
+/* harmony import */ var string_similarity__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(string_similarity__WEBPACK_IMPORTED_MODULE_3__);
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+var TaskBreakdown = function TaskBreakdown() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    inputText = _useState2[0],
+    setInputText = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    subtasks = _useState4[0],
+    setSubtasks = _useState4[1];
+  var handleInputChange = function handleInputChange(event) {
+    setInputText(event.target.value);
+  };
+  var findBestTaskMatch = function findBestTaskMatch(taskInput) {
+    var taskKey = taskInput.toLowerCase().trim();
+
+    // Step 1: Check if input directly exists in predefinedSubtasks
+    if (_predefinedSubtasks_json__WEBPACK_IMPORTED_MODULE_1__[taskKey]) {
+      return taskKey;
+    }
+
+    // Step 2: Check if input is a synonym for a known task
+    for (var _i = 0, _Object$entries = Object.entries(_taskSynonyms_json__WEBPACK_IMPORTED_MODULE_2__); _i < _Object$entries.length; _i++) {
+      var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+        mainTask = _Object$entries$_i[0],
+        synonyms = _Object$entries$_i[1];
+      if (synonyms.includes(taskKey) || mainTask === taskKey) {
+        return mainTask;
+      }
+    }
+
+    // Step 3: Apply fuzzy matching across both task names and synonyms
+    var allPossibleKeys = Object.keys(_predefinedSubtasks_json__WEBPACK_IMPORTED_MODULE_1__);
+    var allPossibleMatches = allPossibleKeys.concat(Object.values(_taskSynonyms_json__WEBPACK_IMPORTED_MODULE_2__).flat());
+    var bestMatch = string_similarity__WEBPACK_IMPORTED_MODULE_3___default().findBestMatch(taskKey, allPossibleMatches);
+    if (bestMatch.bestMatch.rating > 0.5) {
+      // Find the actual predefined task that matches this synonym
+      for (var _i2 = 0, _Object$entries2 = Object.entries(_taskSynonyms_json__WEBPACK_IMPORTED_MODULE_2__); _i2 < _Object$entries2.length; _i2++) {
+        var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+          _mainTask = _Object$entries2$_i[0],
+          _synonyms = _Object$entries2$_i[1];
+        if (_synonyms.includes(bestMatch.bestMatch.target) || _mainTask === bestMatch.bestMatch.target) {
+          return _mainTask;
+        }
+      }
+      return bestMatch.bestMatch.target; // If no synonym match, return closest task name
+    }
+    return null;
+  };
+  var handleButtonClick = function handleButtonClick() {
+    var matchedTask = findBestTaskMatch(inputText);
+    if (matchedTask && _predefinedSubtasks_json__WEBPACK_IMPORTED_MODULE_1__[matchedTask]) {
+      setSubtasks(_predefinedSubtasks_json__WEBPACK_IMPORTED_MODULE_1__[matchedTask]);
+    } else {
+      setSubtasks(["No subtasks found"]);
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Task Breakdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "This component will display the breakdown of tasks."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    value: inputText,
+    onChange: handleInputChange,
+    placeholder: "Enter a task"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleButtonClick
+  }, "Break into subtasks"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Subtasks"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, subtasks.map(function (subtask, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+      key: index
+    }, subtask);
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TaskBreakdown);
+
+/***/ }),
+
+/***/ "./src/predefinedSubtasks.json":
+/*!*************************************!*\
+  !*** ./src/predefinedSubtasks.json ***!
+  \*************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"write research paper":["Conduct literature review","Create outline","Write introduction","Draft methodology","Analyze data","Write results & discussion","Proofread and format","Submit final version"],"develop browser extension":["Set up React project","Integrate existing HTML/JavaScript","Design task breakdown UI","Implement task management logic","Add local storage support","Test extension functionality","Publish to browser store"],"adhd companion widget":["Implement distraction reduction","Integrate noise generator","Add font customization (e.g., Bionic Reading)","Develop body doubling feature","Incorporate task breakdown system","Test with neurodivergent users","Refine based on feedback"],"daily routine":["Morning exercise","Plan daily tasks","Work on priority projects","Lunch break","Afternoon work session","Evening relaxation","Prepare for next day"],"organize workspace":["Declutter desk","Sort and file documents","Label storage containers","Optimize ergonomic setup","Clean surfaces","Dispose of unnecessary items"],"plan trip":["Choose destination","Book flights","Reserve accommodations","Plan itinerary","Pack luggage","Confirm travel documents"],"prepare presentation":["Select topic","Create slides","Write speaker notes","Practice presentation","Gather feedback","Make final adjustments"],"organize event":["Set date and time","Book venue","Send invitations","Arrange catering","Plan activities","Confirm attendance"],"clean house":["Dust surfaces","Vacuum floors","Clean bathrooms","Wash dishes","Organize clutter","Take out trash"],"create website":["Choose domain name","Design wireframe","Develop homepage","Add content pages","Optimize for SEO","Test and launch"],"learn new language":["Choose learning resources","Practice vocabulary daily","Listen to native speakers","Practice speaking","Take grammar lessons","Review progress weekly"],"write blog post":["Choose topic","Research content","Create outline","Write draft","Edit and proofread","Publish and share"],"start fitness routine":["Set fitness goals","Choose workout plan","Create schedule","Track progress","Adjust workouts","Stay consistent"],"meal prep for the week":["Plan meals","Make grocery list","Buy ingredients","Cook meals","Portion into containers","Store properly"],"study for exam":["Gather study materials","Create study schedule","Review notes","Practice past questions","Take mock exams","Revise key concepts"],"apply for jobs":["Update resume","Write cover letter","Search job listings","Submit applications","Prepare for interviews","Follow up with employers"],"set up budget":["Track expenses","Categorize spending","Set saving goals","Allocate funds","Monitor progress","Adjust budget"],"launch YouTube channel":["Choose niche","Plan content","Create branding","Record first video","Edit and upload","Promote channel"],"improve productivity":["Set priorities","Use task manager","Avoid distractions","Take breaks","Review progress","Optimize workflow"],"network professionally":["Create LinkedIn profile","Attend industry events","Engage in online discussions","Follow up with contacts","Request informational interviews","Share valuable insights"],"declutter home":["Sort items by category","Donate unused items","Organize storage spaces","Label essential items","Clean surfaces","Maintain organization"],"improve mental health":["Practice mindfulness","Exercise regularly","Journal thoughts","Talk to a therapist","Limit screen time","Get enough sleep"],"write a book":["Create outline","Write first draft","Edit chapters","Get feedback","Revise manuscript","Publish and promote"],"start side hustle":["Identify niche","Research market","Create business plan","Build online presence","Launch first product","Market business"],"improve sleep routine":["Set bedtime","Avoid screens before bed","Create bedtime routine","Limit caffeine intake","Optimize sleep environment","Track sleep patterns"],"learn coding":["Choose programming language","Follow online courses","Build small projects","Join coding community","Practice problem-solving","Work on real-world projects"],"improve diet":["Reduce processed foods","Eat more vegetables","Stay hydrated","Plan balanced meals","Track eating habits","Avoid late-night snacking"],"start meditation practice":["Choose meditation type","Set daily schedule","Find quiet space","Practice breathing exercises","Use guided meditation","Track mindfulness progress"],"boost creativity":["Try new hobbies","Explore different art forms","Write daily journal","Take inspiration walks","Collaborate with others","Experiment with ideas"],"upgrade home office":["Improve lighting","Organize desk","Buy ergonomic chair","Set up dual monitors","Reduce clutter","Optimize workflow"],"improve communication skills":["Practice active listening","Work on public speaking","Join a speaking club","Engage in conversations","Receive constructive feedback","Read communication books"],"start journaling":["Choose journaling style","Set daily writing habit","Reflect on thoughts","Track goals","Express gratitude","Review past entries"],"build positive habits":["Identify desired habits","Start small","Set reminders","Track progress","Stay consistent","Reward achievements"],"prepare for interview":["Research company","Review job description","Practice common questions","Prepare questions for interviewer","Plan professional attire","Follow up after interview"],"host a dinner party":["Plan menu","Invite guests","Prepare ingredients","Set the table","Cook and serve","Enjoy the event"]}');
+
+/***/ }),
+
+/***/ "./src/taskSynonyms.json":
+/*!*******************************!*\
+  !*** ./src/taskSynonyms.json ***!
+  \*******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"write research paper":["compose academic article","draft study report","create thesis document","write scholarly paper"],"develop browser extension":["build web plugin","create Chrome extension","design Firefox add-on","develop browser add-on"],"adhd companion widget":["focus assistant","neurodivergent productivity tool","executive function aid","attention support app"],"daily routine":["daily schedule","morning and evening habits","daily agenda","everyday plan"],"organize workspace":["declutter office","set up desk","optimize work area","tidy workstation"],"plan trip":["organize vacation","arrange travel","schedule getaway","coordinate holiday"],"prepare presentation":["create slideshow","design keynote","develop PowerPoint","plan speech"],"organize event":["plan gathering","coordinate function","arrange celebration","host an event"],"clean house":["tidy home","housekeeping tasks","home cleaning","deep clean residence"],"create website":["build web page","design site","develop website","construct online platform"],"learn new language":["study foreign language","pick up a new tongue","practice multilingual skills","language acquisition"],"write blog post":["publish article","draft blog entry","create content","compose online post"],"start fitness routine":["begin workout plan","adopt exercise schedule","establish gym habit","launch physical training"],"meal prep for the week":["weekly food planning","batch cooking","prepare meals in advance","pre-make food"],"study for exam":["prepare for test","revise study material","review coursework","exam preparation"],"apply for jobs":["job hunting","submit job applications","search employment","career seeking"],"set up budget":["financial planning","create spending plan","allocate expenses","budgeting strategy"],"launch YouTube channel":["start video blog","create online videos","begin vlogging","open media channel"],"improve productivity":["increase efficiency","enhance work output","boost time management","optimize workflow"],"network professionally":["expand career connections","build industry contacts","professional socializing","grow business network"],"declutter home":["minimalist organization","remove unnecessary items","household tidying","simplify living space"],"improve mental health":["boost emotional well-being","mental wellness activities","enhance psychological health","stress management"],"write a book":["author a novel","compose a manuscript","draft a story","create a literary work"],"start side hustle":["launch small business","begin entrepreneurial venture","start a second income","develop a passion project"],"improve sleep routine":["enhance bedtime habits","fix sleep schedule","establish restful night pattern","optimize sleep hygiene"],"learn coding":["study programming","master software development","pick up coding skills","develop coding expertise"],"improve diet":["adopt healthy eating","enhance nutrition","optimize food intake","clean up meal choices"],"start meditation practice":["begin mindfulness routine","develop relaxation habit","practice deep breathing","incorporate meditation"],"boost creativity":["enhance innovation skills","stimulate artistic thinking","expand creative mindset","improve imaginative ability"],"upgrade home office":["enhance remote workspace","optimize work-from-home setup","improve desk environment","redesign office area"],"improve communication skills":["enhance speaking ability","develop conversational skills","polish interpersonal skills","refine public speaking"],"start journaling":["keep a diary","write daily reflections","record thoughts","document personal experiences"],"build positive habits":["develop self-discipline","establish good routines","create consistent habits","form productive behaviors"],"prepare for interview":["practice job Q&A","rehearse job discussion","train for hiring process","get ready for interview"],"host a dinner party":["organize home gathering","plan social meal","arrange evening event","entertain guests"],"manage time better":["increase time efficiency","enhance task prioritization","improve schedule control","optimize daily planning"],"fix posture":["correct body alignment","improve sitting habits","develop ergonomic stance","enhance physical posture"],"read more books":["increase reading habits","consume more literature","engage in book learning","expand knowledge through books"],"reduce screen time":["limit digital exposure","cut down phone usage","minimize screen addiction","control device time"],"develop leadership skills":["enhance management ability","improve decision-making","learn team leadership","build executive presence"],"become more organized":["increase orderliness","improve personal structure","develop systematic thinking","enhance planning ability"],"improve handwriting":["enhance penmanship","practice calligraphy","develop writing clarity","increase writing fluidity"],"learn an instrument":["pick up musical skills","master playing an instrument","study music theory","practice musical techniques"],"strengthen memory":["enhance recall ability","improve cognitive function","boost brain power","train mental retention"],"fix procrastination":["overcome task delay","beat avoidance habits","increase work initiation","improve time management"],"learn public speaking":["master speech delivery","train for presentations","develop speaking confidence","improve articulation"],"increase self-discipline":["build willpower","strengthen self-control","improve personal accountability","develop better habits"],"improve emotional intelligence":["enhance empathy skills","develop self-awareness","improve relationship management","increase emotional regulation"],"get better at negotiations":["develop persuasion skills","enhance deal-making ability","master communication in conflict","improve bargaining strategies"],"learn first aid":["train for medical emergencies","acquire lifesaving skills","study CPR techniques","develop safety preparedness"],"develop better study habits":["improve learning efficiency","optimize knowledge retention","enhance academic discipline","adopt smarter studying methods"],"start a gratitude journal":["document positive experiences","cultivate thankfulness","reflect on daily joys","practice appreciation writing"],"increase physical endurance":["enhance stamina","build workout tolerance","strengthen cardiovascular fitness","train for long-term energy"],"improve conflict resolution":["develop negotiation tactics","enhance problem-solving ability","handle disagreements effectively","strengthen diplomatic skills"],"enhance digital security":["protect online privacy","improve cybersecurity measures","use stronger passwords","secure personal data"],"become a morning person":["wake up earlier","fix sleep cycle","establish morning habits","increase morning productivity"],"learn financial literacy":["understand money management","improve investment knowledge","master budgeting","enhance personal finance skills"]}');
 
 /***/ })
 
@@ -38457,8 +38677,9 @@ var Settings = function Settings() {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
+"use strict";
 /*!***************************!*\
   !*** ./src/popupIndex.js ***!
   \***************************/

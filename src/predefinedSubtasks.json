@@ -1,0 +1,287 @@
+{
+    "write research paper": [
+        "Conduct literature review",
+        "Create outline",
+        "Write introduction",
+        "Draft methodology",
+        "Analyze data",
+        "Write results & discussion",
+        "Proofread and format",
+        "Submit final version"
+    ],
+    "develop browser extension": [
+        "Set up React project",
+        "Integrate existing HTML/JavaScript",
+        "Design task breakdown UI",
+        "Implement task management logic",
+        "Add local storage support",
+        "Test extension functionality",
+        "Publish to browser store"
+    ],
+    "adhd companion widget": [
+        "Implement distraction reduction",
+        "Integrate noise generator",
+        "Add font customization (e.g., Bionic Reading)",
+        "Develop body doubling feature",
+        "Incorporate task breakdown system",
+        "Test with neurodivergent users",
+        "Refine based on feedback"
+    ],
+    "daily routine": [
+        "Morning exercise",
+        "Plan daily tasks",
+        "Work on priority projects",
+        "Lunch break",
+        "Afternoon work session",
+        "Evening relaxation",
+        "Prepare for next day"
+    ],
+    "organize workspace": [
+        "Declutter desk",
+        "Sort and file documents",
+        "Label storage containers",
+        "Optimize ergonomic setup",
+        "Clean surfaces",
+        "Dispose of unnecessary items"
+    ],
+    "plan trip": [
+        "Choose destination",
+        "Book flights",
+        "Reserve accommodations",
+        "Plan itinerary",
+        "Pack luggage",
+        "Confirm travel documents"
+    ],
+    "prepare presentation": [
+        "Select topic",
+        "Create slides",
+        "Write speaker notes",
+        "Practice presentation",
+        "Gather feedback",
+        "Make final adjustments"
+    ],
+    "organize event": [
+        "Set date and time",
+        "Book venue",
+        "Send invitations",
+        "Arrange catering",
+        "Plan activities",
+        "Confirm attendance"
+    ],
+    "clean house": [
+        "Dust surfaces",
+        "Vacuum floors",
+        "Clean bathrooms",
+        "Wash dishes",
+        "Organize clutter",
+        "Take out trash"
+    ],
+    "create website": [
+        "Choose domain name",
+        "Design wireframe",
+        "Develop homepage",
+        "Add content pages",
+        "Optimize for SEO",
+        "Test and launch"
+    ],
+    "learn new language": [
+        "Choose learning resources",
+        "Practice vocabulary daily",
+        "Listen to native speakers",
+        "Practice speaking",
+        "Take grammar lessons",
+        "Review progress weekly"
+    ],
+    "write blog post": [
+        "Choose topic",
+        "Research content",
+        "Create outline",
+        "Write draft",
+        "Edit and proofread",
+        "Publish and share"
+    ],
+    "start fitness routine": [
+        "Set fitness goals",
+        "Choose workout plan",
+        "Create schedule",
+        "Track progress",
+        "Adjust workouts",
+        "Stay consistent"
+    ],
+    "meal prep for the week": [
+        "Plan meals",
+        "Make grocery list",
+        "Buy ingredients",
+        "Cook meals",
+        "Portion into containers",
+        "Store properly"
+    ],
+    "study for exam": [
+        "Gather study materials",
+        "Create study schedule",
+        "Review notes",
+        "Practice past questions",
+        "Take mock exams",
+        "Revise key concepts"
+    ],
+    "apply for jobs": [
+        "Update resume",
+        "Write cover letter",
+        "Search job listings",
+        "Submit applications",
+        "Prepare for interviews",
+        "Follow up with employers"
+    ],
+    "set up budget": [
+        "Track expenses",
+        "Categorize spending",
+        "Set saving goals",
+        "Allocate funds",
+        "Monitor progress",
+        "Adjust budget"
+    ],
+    "launch YouTube channel": [
+        "Choose niche",
+        "Plan content",
+        "Create branding",
+        "Record first video",
+        "Edit and upload",
+        "Promote channel"
+    ],
+    "improve productivity": [
+        "Set priorities",
+        "Use task manager",
+        "Avoid distractions",
+        "Take breaks",
+        "Review progress",
+        "Optimize workflow"
+    ],
+    "network professionally": [
+        "Create LinkedIn profile",
+        "Attend industry events",
+        "Engage in online discussions",
+        "Follow up with contacts",
+        "Request informational interviews",
+        "Share valuable insights"
+    ],
+    "declutter home": [
+        "Sort items by category",
+        "Donate unused items",
+        "Organize storage spaces",
+        "Label essential items",
+        "Clean surfaces",
+        "Maintain organization"
+    ],
+    "improve mental health": [
+        "Practice mindfulness",
+        "Exercise regularly",
+        "Journal thoughts",
+        "Talk to a therapist",
+        "Limit screen time",
+        "Get enough sleep"
+    ],
+    "write a book": [
+        "Create outline",
+        "Write first draft",
+        "Edit chapters",
+        "Get feedback",
+        "Revise manuscript",
+        "Publish and promote"
+    ],
+    "start side hustle": [
+        "Identify niche",
+        "Research market",
+        "Create business plan",
+        "Build online presence",
+        "Launch first product",
+        "Market business"
+    ],
+    "improve sleep routine": [
+        "Set bedtime",
+        "Avoid screens before bed",
+        "Create bedtime routine",
+        "Limit caffeine intake",
+        "Optimize sleep environment",
+        "Track sleep patterns"
+    ],
+    "learn coding": [
+        "Choose programming language",
+        "Follow online courses",
+        "Build small projects",
+        "Join coding community",
+        "Practice problem-solving",
+        "Work on real-world projects"
+    ],
+    "improve diet": [
+        "Reduce processed foods",
+        "Eat more vegetables",
+        "Stay hydrated",
+        "Plan balanced meals",
+        "Track eating habits",
+        "Avoid late-night snacking"
+    ],
+    "start meditation practice": [
+        "Choose meditation type",
+        "Set daily schedule",
+        "Find quiet space",
+        "Practice breathing exercises",
+        "Use guided meditation",
+        "Track mindfulness progress"
+    ],
+    "boost creativity": [
+        "Try new hobbies",
+        "Explore different art forms",
+        "Write daily journal",
+        "Take inspiration walks",
+        "Collaborate with others",
+        "Experiment with ideas"
+    ],
+    "upgrade home office": [
+        "Improve lighting",
+        "Organize desk",
+        "Buy ergonomic chair",
+        "Set up dual monitors",
+        "Reduce clutter",
+        "Optimize workflow"
+    ],
+    "improve communication skills": [
+        "Practice active listening",
+        "Work on public speaking",
+        "Join a speaking club",
+        "Engage in conversations",
+        "Receive constructive feedback",
+        "Read communication books"
+    ],
+    "start journaling": [
+        "Choose journaling style",
+        "Set daily writing habit",
+        "Reflect on thoughts",
+        "Track goals",
+        "Express gratitude",
+        "Review past entries"
+    ],
+    "build positive habits": [
+        "Identify desired habits",
+        "Start small",
+        "Set reminders",
+        "Track progress",
+        "Stay consistent",
+        "Reward achievements"
+    ],
+    "prepare for interview": [
+        "Research company",
+        "Review job description",
+        "Practice common questions",
+        "Prepare questions for interviewer",
+        "Plan professional attire",
+        "Follow up after interview"
+    ],
+    "host a dinner party": [
+        "Plan menu",
+        "Invite guests",
+        "Prepare ingredients",
+        "Set the table",
+        "Cook and serve",
+        "Enjoy the event"
+    ]
+}

@@ -1,9 +1,17 @@
 {
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.5",
+    "@mui/material": "^6.4.5",
     "chrome-types": "^0.1.310",
+    "lucide-react": "^0.476.0",
+    "natural": "^8.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.2.0"
+    "react-router-dom": "^7.2.0",
+    "shadcn-ui": "^0.9.4",
+    "string-similarity": "^4.0.4"
   },
   "name": "adhd_project_extension",
   "version": "1.0.0",
